@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="中文油库里语音合成">
+    <meta name="keywords" content="油库里,yukuuri">
+    <title>中文油库里 Zh-Yukumo</title>
+    <link href="https://www.yukumo.net/static/favicon.ico" rel="icon"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <script src="yukumo/core.js"></script>
+    <script src="yukumo/browser.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/qmsg@1.4.0/dist/index.umd.min.js"></script>
+    <script src="js/zh2jp.js"></script>
+    <style>
+      @media all and (orientation: landscape) {
+        .container {
+          width: 20em;
+        }
+      }
+      .container {
+        margin: 2em;
+        font-family: "Hiragino Kaku Gothic Pro", serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="overflow: hidden;height: 2em;">
+      <nav class="demo">
+        <a class="brand">
+          <span>Zh-Yukumo！</span>
+        </a>
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">&#8801;</label>
+        <div class="menu">
+          <a class="pseudo button">本页</a>
+          <a class="button" href="https://github.com/Love-Kogasa/zh-yukuuri">Github</a>
+          <a class="button" href="https://www.yukumo.net/#/">Yukumo！</a>
+          <a class="button" href="https://www.a-quest.com/">AquestTalk</a>
+        </div>
+      </nav>
+    </div>
+    <center>
+      <div class="container">
+        <a href="https://www.yukumo.net/"><img src="yukumo.png" width="77%" style="box-shadow: none;"></a><br>
+        ZH-Yukuuri
+        <br>
+        <input type="text" placeholder="输入一些文本吧 w/" id="text">
+        <div class="flex two">
+          <div>
+            <button id="play">▷ </button>
+            <label for="more" class="button">☰ More</label>
+          </div>
+          <select id="voice">
+            <option value="f1">声 AquesTalkF1</option>
+            <option value="f2">声 AquesTalkF2</option>
+            <option value="f3">声 AquesTalkF3</option>
+            <option value="m1">声 AquesTalkM1</option>
+            <option value="m2">声 AquesTalkM2</option>
+            <option value="r1">声 AquesTalkR1</option>
+            <option value="r2">声 AquesTalkR2</option>
+          </select>
+        </div>
+        <div class="modal">
+          <input id="more" type="checkbox">
+          <label for="more" class="overlay"></label>
+          <article style="width: 90%;">
+            <header>
+              <h3>More 更多操作</h3>
+            <label for="more" class="close">&times;</label>
+            </header>
+            <section class="content">
+              除了播放和下载音频外，您还可以选择生成html代码插入到您的页面等！<br>
+              尽管提供API URL来获取音频，我和你建议您下载音频文件到本地或使用Base64编码
+              <hr>
+              点击想要的操作即可<br>
+              <button id="download">▼ Download & 下载</button><br>
+              <button id="link">↗ Link & URL地址</button><br>
+              <button id="html">♢ HTML & HTML代码</button><br>
+              <button id="base64">∷ Base64 & BASE64编码</button><br>
+              相应的文字结果会输出到这里
+              <pre id="result" style="height: 6em; overflow-y: none;">空空如也╮( •́ω•̀ )╭</pre>
+              <button id="copy">□ 复制</button>
+              <hr>
+            </section>
+            <footer>
+              <label for="more" class="button dangerous">
+                Cancel & 关闭
+              </label>
+            </footer>
+          </article>
+        </div>
+        <br>
+        <p>这是一个允许中文的油库里合成器(/AquestTalk)，基于 <a href="https://www.yukumo.net">www.yukumo.net</a> 的API，中文处理使用 <a href="https://www.ltool.net/chinese-simplified-and-traditional-characters-pinyin-to-katakana-converter-in-simplified-chinese.php">ltool.net</a>，前端使用及一些说明请见下文</p>
+        <h2><img src="icon.svg" style="width: 1em; margin-bottom: -0.1em"> 相关说明</h2>
+        <p>本站使用了 <a href="www.yukumo.net">www.yukumo.net</a> 的合成api，原因是我突然心血来潮，然后就把yukumo.net的api翻出来了(，然后就想着做了这个。
+        <br>所以本站的出现是要非常感谢yukumo.net的作者yuichi大佬的，有能力可以去支持一下那边)
+        <br>正如上文所说，本站点使用的是api而不是库或者wasm等，你可以在前端非盈利条件下使用它合成的语音，您可以使用本站生成的代码插入到您的页面上，也可以参考本项目(<a href="https://github.com/Love-Kogasa/zh-yukuuri">Github</a>)在前端使用<br>
+        使用时请注意遵守<a href="https://www.yukumo.net/#/about">相关规约</a>，简单来说，您可以无偿在非盈利条件下上使用语音
+        <br><br>
+          本页由 <a href="https://github.com/Love-Kogasa">Love-Kogasa</a> 编写
+        <br><br><br></p>
+      </div>
+    <center>
+    <script src="js/index.js"></script>
+  </body>
+</html>
