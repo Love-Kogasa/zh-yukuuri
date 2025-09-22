@@ -1,6 +1,6 @@
 var aquestalk
 var yukuuri = aquestalk = {
-  api: "https://www.yukumo.net/api/v2/aqtk10/koe.mp3",
+  api: "https://www.yukumo.net/api/v2/:aqtk/koe.mp3",
   createAudio( string, voice ) {
     var audio = new Audio()
     audio.src = YukumoVoice.getUrl( string, voice, this.api )

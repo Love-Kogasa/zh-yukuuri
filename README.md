@@ -3,7 +3,15 @@
 本站使用 www.yukumo.net 作为API，在 www.yukumo.net 的基础上提供了中文支持  
 有条件请去支持一下 www.yukumo.net 的创作者Yuichi大佬哦)  
 
+## Change Log
+本版本更新了对AquesTalk1的支持，后续也会加入对AquesTalk2音频的支持  
+由于我发现音频放出来感觉不对，然后一看yukumo那边默认是AQTK-1，所以就趁午休和晚休这极短的一段时间把AQTK1的支持赶出来了w  
+没有时间和精力去整理代码，文档请期待下一个版本)  
+感谢支持
+
 ## 前端使用
+(候补)
+<!--
 > 在使用时需要注意相关的 [使用规约](https://www.yukumo.net/#/about)  
 > 您可以在非商用场景下随意使用  
 
@@ -63,3 +71,4 @@ yukuuri.playAudio( "Hello", YukumoVoice.f1 )
 ```
 
 暂无w/如果不全敬请期待)  
+-->

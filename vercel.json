@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/yukumo.mp3",
-      "destination": "https://www.yukumo.net/api/v2/aqtk10/koe.mp3"
+      "source": "/:aqtk/yukumo.mp3",
+      "destination": "https://www.yukumo.net/api/v2/:aqtk/koe.mp3"
     },
     {
       "source": "/cn2jp.php",
