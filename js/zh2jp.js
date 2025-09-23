@@ -1,7 +1,7 @@
-var api = "/cn2jp.php"
+var translator = "/cn2jp.php"
 function zh2jp( string ) {
   return new Promise( (res, rej) => {
-    fetch( api, {
+    fetch( translator, {
       method: "POST",
       body: `contents=${encodeURIComponent(string)}}&option=1&optionext=zenkaku`,
       headers: {
