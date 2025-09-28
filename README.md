@@ -1,4 +1,5 @@
 # ZH-YukumO
+**油库里: Yukkuri, Yukuuri是因为手残打错了()**  
 基于 www.yukumo.net 的非官方油库里合成器  
 本站使用 www.yukumo.net 作为API，在 www.yukumo.net 的基础上提供了中文支持  
 有条件请去支持一下 www.yukumo.net 的创作者Yuichi大佬哦)  

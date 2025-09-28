@@ -15,6 +15,8 @@ class YukumoVoice {
     return `?type=${this.type}&speed=${this.speed}&volume=${this.volume}&pitch=${this.pitch}&accent=${this.accent}&lmd=${this.lmd}&fsc=${this.fsc}&kanji=${encodeURIComponent( string )}`
   }
   
+  // 使用这种方法只是为了更清楚
+  // 我看着也舒服一些(
   static f1 = new YukumoVoice("f1e", 100, 100, 100, 100, 100, 100)
   static f2 = new YukumoVoice("f2e", 100, 100,  77, 150, 100, 100)
   static f3 = new YukumoVoice("f1e", 80, 100, 100, 100,  61, 148)
@@ -53,6 +55,33 @@ class AquesTalk1 {
 
 var AQTK_VOICE1 = AquesTalk1
 
+function AquesTalk2( ...args ) {
+  // AquesTalk1.prototype.constructor.apply( this, args )
+  // Class constructor cannot called without new
+  Object.assign( this, new AquesTalk1( ...args ) )
+  this.aqtk = "aqtk2"
+}
+// 只继承动态方法
+AquesTalk2.prototype = Object.create(AquesTalk1.prototype)
+Object.assign( AquesTalk2, {
+
+  rm: new AquesTalk2( "rm" ),
+  yukkuri: new AquesTalk2( "yukkuri" ),
+  robo: new AquesTalk2( "robo" ),
+  rb2: new AquesTalk2( "rb2" ),
+  rb3: new AquesTalk2( "rb3" ),
+  mf2: new AquesTalk2( "mf2" ),
+  mf1: new AquesTalk2( "mf1" ),
+  f1c: new AquesTalk2( "f1c" ),
+  f3a: new AquesTalk2( "f3a" ),
+  f4: new AquesTalk2( "f4" ),
+  huskey: new AquesTalk2( "huskey" ),
+  m4b: new AquesTalk2( "m4b" ),
+  m5: new AquesTalk2( "m5" ),
+  rm3: new AquesTalk2( "rm3" )
+  
+})
+
 var YukumoVoices = {
 
   // Aqtk10
@@ -72,7 +101,24 @@ var YukumoVoices = {
   "jgr@1": AquesTalk1.jgr,
   "m1@1": AquesTalk1.m1,
   "m2@1": AquesTalk1.m2,
-  "r1@1": AquesTalk1.r1
+  "r1@1": AquesTalk1.r1,
+  
+  // Aqtk2
+  "rm@2": AquesTalk2.rm,
+  "rb2@2": AquesTalk2.rb2,
+  "mf1@2": AquesTalk2.mf1,
+  "rb3@2": AquesTalk2.rb3,
+  "mf2@2": AquesTalk2.mf2,
+  "f1c@2": AquesTalk2.f1c,
+  "f3a@2": AquesTalk2.f3a,
+  "f4@2": AquesTalk2.f4,
+  "m4b@2": AquesTalk2.m4b,
+  "m5@2": AquesTalk2.m5,
+  "rm3@2": AquesTalk2.rm3,
+  "yukkuri@2": AquesTalk2.yukkuri,
+  "robo@2": AquesTalk2.robo,
+  "huskey@2": AquesTalk2.huskey
+  
 }
 
 if( typeof module === "object" )
