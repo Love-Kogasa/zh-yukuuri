@@ -8,7 +8,7 @@ var yukuuri = aquestalk = {
   },
   downloadAudio( string, filename = "download.mp3", voice ) {
     var a = document.createElement( "a" )
-    a.src = YukumoVoice.getUrl( string, voice, this.api )
+    a.href = YukumoVoice.getUrl( string, voice, this.api )
     a.download = filename
     a.click()
     return a
