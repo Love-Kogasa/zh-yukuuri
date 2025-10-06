@@ -3,10 +3,6 @@
     {
       "source": "/:aqtk/yukumo.mp3",
       "destination": "https://www.yukumo.net/api/v2/:aqtk/koe.mp3"
-    },
-    {
-      "source": "/cn2jp.php",
-      "destination": "https://www.ltool.net/chinese-simplified-and-traditional-characters-pinyin-to-katakana-converter-in-simplified-chinese.php"
     }
   ]
 }

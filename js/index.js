@@ -28,9 +28,7 @@ var download = document.getElementById( "download" )
 download.onclick = async () => {
   var txt = ""
   if( zh.test( text.value ) ) {
-    var msg = Qmsg.loading( "正在将中文转换为日文" )
     txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, '')
-    msg.close()
   } else txt = text.value
   Qmsg.info( "下载会在(约)一分钟内弹出，请稍等" )
   yukuuri.downloadAudio( txt, "yukuuri.mp3", YukumoVoices[voice.value])
@@ -44,9 +42,7 @@ link.onclick = async () => {
   }
   var txt = ""
   if( zh.test( text.value ) ) {
-    var msg = Qmsg.loading( "正在将中文转换为日文" )
     txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, '')
-    msg.close()
   } else txt = text.value
   result.textContent = YukumoVoice.getUrl( txt, YukumoVoices[voice.value] )
 }
@@ -59,9 +55,7 @@ html.onclick = async () => {
   }
   var txt = ""
   if( zh.test( text.value ) ) {
-    var msg = Qmsg.loading( "正在将中文转换为日文" )
     txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, '')
-    msg.close()
   } else txt = text.value
   result.textContent = "<audio autoplay src=\"" + YukumoVoice.getUrl( txt, YukumoVoices[voice.value] ) + "\">\n  您的浏览器不支持audio\n</audio>"
 }
