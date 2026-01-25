@@ -2,9 +2,8 @@ import js from "@eslint/js"
 import globals from "globals"
 import { defineConfig } from "eslint/config"
 export default defineConfig([
-    { 
-    // This block handles JavaScript files and general rules
-        files: ["**/*.{js,mjs,cjs,ts,tsx}"], // Added .ts and .tsx if you use them
+    {
+        files: ["**/*.js"],
         plugins: { 
             js
         }, 
