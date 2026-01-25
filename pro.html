@@ -25,6 +25,17 @@
         margin: 2em;
         font-family: "Hiragino Kaku Gothic Pro", serif;
       }
+      .box {
+        background-color: #EEE;
+        border-radius: 1em;
+        text-align: center;
+        padding: 2px;
+        height: 2em;
+        transition: all 0.5s ease;
+      }
+      .box:active {
+        background-color: #CCC;
+      }
     </style>
   </head>
   <body>
@@ -36,8 +47,8 @@
         <input id="bmenub" type="checkbox" class="show">
         <label for="bmenub" class="burger pseudo button">&#8801;</label>
         <div class="menu">
+          <a href="/" class="button">主页</a>
           <a class="pseudo button">本页</a>
-          <a class="button" href="/pro">PRO 更多</a>
           <a class="button" href="https://github.com/Love-Kogasa/zh-yukuuri">Github (本项目)</a>
           <a class="button" href="https://www.yukumo.net/#/">Yukumo！</a>
           <a class="button" href="https://www.a-quest.com/">AquestTalk</a>
@@ -47,16 +58,20 @@
     </div>
     <center>
       <div class="container">
-        <a href="https://www.yukumo.net/"><img src="yukumo.png" width="77%" style="box-shadow: none;"></a><br>
-        ZH-Yukkuri
-        <br>
-        <input type="text" placeholder="输入一些文本吧 w/" id="text">
+        <textarea id="input" placeholder="想说的内容写到这里"></textarea>
         <div class="flex two">
-          <div>
-            <button id="play">▷ </button>
-            <label for="more" class="button">☰ More</label>
-          </div>
-          <select id="voice">
+          <label for="output">转换(->AqTk可识别的日语字符)</label>
+          <button id="convert">转换</button>
+        </div>
+        <textarea id="output" placeholder="转换后的文字会输出在这里"></textarea>
+        <div class="flex two">
+          <div>文本长度(<span id="count">0</span>)</div>
+          <div><select>
+            <option>(敬请期待)</option>
+          </select></div>
+        </div>
+        <div class="flex three">
+          <div class="two-third"><select id="voice">
             <!-- AQTK 1 -->
             <option value="f1@1">声 AQTK1-F1 (油库里)</option>
             <option value="f2@1">声 AQTK1-F2</option>
@@ -89,49 +104,32 @@
             <option value="yukkuri@2">声 AQTK2-Yukkuri</option>
             <option value="robo@2">声 AQTK2-Robot</option>
             <option value="huskey@2">声 AQTK2-Huskey</option>
-          </select>
+          </select></div>
+          <div><select id="effect">
+            <option value="none">效果: 无</option>
+            <option value="echo">效果: 回声</option>
+          </select></div>
+          <div>
+            <div class="flex two">
+              <span class="box" id="play">▷</span>
+              <span class="box" id="download">↓</span>
+            </div>
+          </div>
+          <div><input id="speed" type="number" placeholder="语速(100)"></div>
+          <div><input id="volum" type="number" placeholder="音量(100)"></div>
         </div>
-        <div class="modal">
-          <input id="more" type="checkbox">
-          <label for="more" class="overlay"></label>
-          <article style="width: 90%;">
-            <header>
-              <h3>More 更多操作</h3>
-            <label for="more" class="close">&times;</label>
-            </header>
-            <section class="content">
-              除了播放和下载音频外，您还可以选择生成html代码插入到您的页面等！<br>
-              尽管提供API URL来获取音频，我和你建议您下载音频文件到本地或使用Base64编码
-              <hr>
-              点击想要的操作即可<br>
-              <button id="download">▼ Download & 下载</button><br>
-              <button id="link">↗ Link & URL地址</button><br>
-              <button id="html">♢ HTML & HTML代码</button><br>
-              <button id="base64">∷ Base64 & BASE64编码</button><br>
-              相应的文字结果会输出到这里
-              <pre id="result" style="height: 6em; overflow-y: none;">空空如也╮( •́ω•̀ )╭</pre>
-              <button id="copy">□ 复制</button>
-              <hr>
-            </section>
-            <footer>
-              <label for="more" class="button dangerous">
-                Cancel & 关闭
-              </label>
-            </footer>
-          </article>
+        <hr>
+        <div>
+          <div align="left">其他功能&选项: </div>
+          <input type="text" placeholder="下载文件名(默认yukuuri.wav)" id="filename">
+          <div class="flex two">
+            <div><button class="tooltip-top full" data-tooltip="只将中文转换为同音日语，不经过AquesTalk2Koe" id="convert-zh">转换(中文-日语)</button></div>
+            <div><button class="full tooltip-left" data-tooltip="保存当前文本框内容以便下次使用" id="savetext">保存</button></div>
+          </div>
+          <div align="left"><a href="https://www.yukumo.net/static/siyo_onseikigou.pdf">你可以使用一些字符标记来控制输出的发音，点我(未汉化)</a></div>
         </div>
-        <br>
-        <p>这是一个允许中文的油库里合成器(/AquestTalk)，基于 <a href="https://www.yukumo.net">www.yukumo.net</a> 的API，现支持在前端(浏览器内)进行中文处理w，前端使用及一些说明请见下文</p>
-        <h2><img src="icon.svg" style="width: 1em; margin-bottom: -0.1em"> 相关说明</h2>
-        <p>本站使用了 <a href="www.yukumo.net">www.yukumo.net</a> 的合成api，原因是我突然心血来潮，然后就把yukumo.net的api翻出来了(，然后就想着做了这个。
-        <br>所以本站的出现是要非常感谢yukumo.net的作者yuichi大佬的，有能力可以去支持一下那边)
-        <br>正如上文所说，本站点使用的是api而不是库或者wasm等，你可以在前端非盈利条件下使用它合成的语音，您可以使用本站生成的代码插入到您的页面上，也可以参考本项目(<a href="https://github.com/Love-Kogasa/zh-yukuuri">Github</a>)在前端使用<br>
-        使用时请注意遵守<a href="https://www.yukumo.net/#/about">相关规约</a>，简单来说，您可以无偿在非盈利条件下上使用语音
-        <br><br>
-          本页由 <a href="https://github.com/Love-Kogasa">Love-Kogasa</a> 编写
-        <br><br><br></p>
       </div>
-    <center>
-    <script src="js/index.js"></script>
+    </center>
+    <script src="js/pro.js"></script>
   </body>
 </html>

@@ -8,5 +8,5 @@ async function zh2jp( string ) {
   string = string.replaceAll( " ", "_" )
   return p2k.pinyinToKana(
     Pinyin.parse( string ).map( t => t.type === 2 ? t.target + " " : t.source ).join( "" )
-  )
+  ).replaceAll("_", " ")
 }

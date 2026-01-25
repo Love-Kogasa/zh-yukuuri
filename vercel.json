@@ -3,6 +3,14 @@
     {
       "source": "/:aqtk/yukumo.mp3",
       "destination": "https://www.yukumo.net/api/v2/:aqtk/koe.mp3"
+    },
+    {
+      "source": "/koe.txt",
+      "destination": "https://www.yukumo.net/api/v2/aqk2k/koe.txt"
+    },
+    {
+      "source": "/pro",
+      "destination": "/pro.html"
     }
   ]
 }

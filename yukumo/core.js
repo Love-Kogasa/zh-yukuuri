@@ -10,9 +10,10 @@ class YukumoVoice {
     this.accent = acc
     this.lmd = lmd
     this.fsc = fsc
+    this.effect = "none"
   }
   format( string ) {
-    return `?type=${this.type}&speed=${this.speed}&volume=${this.volume}&pitch=${this.pitch}&accent=${this.accent}&lmd=${this.lmd}&fsc=${this.fsc}&kanji=${encodeURIComponent( string )}`
+    return `?type=${this.type}&speed=${this.speed}&volume=${this.volume}&pitch=${this.pitch}&accent=${this.accent}&lmd=${this.lmd}&fsc=${this.fsc}&kanji=${encodeURIComponent( string )}&effect=${this.effect}`
   }
   
   // 使用这种方法只是为了更清楚
