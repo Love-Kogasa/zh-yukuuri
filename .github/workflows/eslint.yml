@@ -36,7 +36,5 @@ jobs:
           
 
       - name: Run ESLint
-        env:
-          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: npx eslint .
         continue-on-error: true
