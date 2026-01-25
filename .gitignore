@@ -1,3 +1,4 @@
 .vercel
 *.bak
 yukumo-zh.zip
+node_modules/
