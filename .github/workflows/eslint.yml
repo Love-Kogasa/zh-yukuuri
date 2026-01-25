@@ -36,5 +36,4 @@ jobs:
           
 
       - name: Run ESLint
-        run: npx eslint .
-        continue-on-error: true
+        run: npx eslint . --config eslint.config.mjs
