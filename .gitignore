@@ -1,3 +1,5 @@
 .vercel
 *.bak
 yukumo-zh.zip
+package-lock.json
+node_modules/
