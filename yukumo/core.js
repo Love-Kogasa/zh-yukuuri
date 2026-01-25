@@ -92,7 +92,6 @@ var YukumoVoices = {
     "m1@10": YukumoVoice.m1,
     "m2@10": YukumoVoice.m2,
     "r1@10": YukumoVoice.r1,
-    "r1@10": YukumoVoice.r1,
   
     // Aqtk1
     "f1@1": AquesTalk1.f1,

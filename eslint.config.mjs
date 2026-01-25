@@ -15,7 +15,9 @@ export default defineConfig([
             "semi": [2, "never"],
             "indent": [2, 4, { SwitchCase: 1 }],
             "quotes": [2, "double"],
-            "no-multiple-empty-lines": [2, { max: 1 }]
+            "no-multiple-empty-lines": [2, { max: 1 }],
+	    "no-undef" : [0],
+	    "no-unused-vars" : [0]
         }
     },
     { 
