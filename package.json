@@ -18,7 +18,8 @@
   "type": "commonjs",
   "main": "config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo '( ﹡ˆoˆ﹡ )'"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
