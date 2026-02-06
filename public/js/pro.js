@@ -124,8 +124,8 @@ download.onclick = async function() {
     try {
         var voc = createVoice()
         await aquestalk.downloadAudio(
-           zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value
-        , filename.value || "yukumo.wav", voc)
+            zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value,
+        filename.value || "yukumo.wav", voc)
     } catch(e) {
         Qmsg.error(e.toString())
         console.error(e)
