@@ -1,7 +1,7 @@
 var p2k = void 0
 var converter = window.index.NumberToChineseWords
 async function zh2jp( string, number ) {
-    if(number) string = string.replace(/\-{0,1}\d+(\.\d+){0,1}/, matched => {
+    if(number) string = string.replace(/-{0,1}\d+(\.\d+){0,1}/, matched => {
       try {
         return converter.toWords(Number (matched))
       } catch(e) {
