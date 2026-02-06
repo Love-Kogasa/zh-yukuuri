@@ -13,6 +13,7 @@
     <script src="https://fastly.jsdelivr.net/npm/qmsg@1.4.0/dist/index.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/creeperyang/pinyin/docs/browser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pinyin-to-kana@1.0.0/pinyinToKana.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/number-to-chinese-words@1.0.20/number-to-chinese-words.min.js"></script>
     <script src="js/zh2jp.js"></script>
     <script src="config.js"></script>
     <style>
@@ -120,6 +121,10 @@
             </footer>
           </article>
         </div>
+        <label>
+          <input type="checkbox" id="convert-number" checked>
+          <span class="checkable">在含有中文时转换数字为中文</span>
+        </label>
         <br>
         <p>这是一个允许中文的油库里合成器(/AquestTalk)，基于 <a href="https://www.yukumo.net">www.yukumo.net</a> 的API，现支持在前端(浏览器内)进行中文处理w，前端使用及一些说明请见下文</p>
         <h2><img src="icon.svg" style="width: 1em; margin-bottom: -0.1em"> 相关说明</h2>

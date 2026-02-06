@@ -10,6 +10,8 @@ var convert = document.getElementById("convert")
 var filename = document.getElementById("filename")
 var convertZh = document.getElementById("convert-zh")
 var save = document.getElementById("savetext")
+var number = document.getElementById( "convert-number" )
+var counter = document.getElementById( "count" )
 
 var cache = {text: void 0}
 var ctx = new AudioContext()
@@ -80,9 +82,13 @@ function createVoice() {
     return voc
 }
 
+input.oninput = function() {
+    counter.textContent = input.value.length
+}
+
 convert.onclick = async function() {
     try {
-        var text = zh.test(input.value) ? await zh2jp(input.value) : input.value
+        var text = zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value
         output.value = await koe(text)
     } catch(e) {
         Qmsg.error(e.toString())
@@ -92,7 +98,7 @@ convert.onclick = async function() {
 
 convertZh.onclick = async function() {
     try {
-        var text = zh.test(input.value) ? await zh2jp(input.value) : input.value
+        var text = zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value
         output.value = text
     } catch(e) {
         Qmsg.error(e.toString())
@@ -105,7 +111,7 @@ playBtn.onclick = async function() {
         var msg = Qmsg.loading("正在获取ING")
         var voc = createVoice()
         await aquestalk.playAudio(
-            zh.test(input.value) ? await zh2jp(input.value) : input.value,
+            zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value,
             voc)
         msg.close()
     } catch(e) {
@@ -117,7 +123,9 @@ playBtn.onclick = async function() {
 download.onclick = async function() {
     try {
         var voc = createVoice()
-        await aquestalk.downloadAudio(input.value, filename.value || "yukumo.wav", voc)
+        await aquestalk.downloadAudio(
+           zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value
+        , filename.value || "yukumo.wav", voc)
     } catch(e) {
         Qmsg.error(e.toString())
         console.error(e)

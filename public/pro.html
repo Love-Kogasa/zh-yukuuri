@@ -13,6 +13,7 @@
     <script src="https://fastly.jsdelivr.net/npm/qmsg@1.4.0/dist/index.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/creeperyang/pinyin/docs/browser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pinyin-to-kana@1.0.0/pinyinToKana.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/number-to-chinese-words@1.0.20/number-to-chinese-words.min.js"></script>
     <script src="js/zh2jp.js"></script>
     <script src="config.js"></script>
     <style>
@@ -120,6 +121,10 @@
         </div>
         <hr>
         <div>
+          <label>
+            <input type="checkbox" id="convert-number" checked>
+            <span class="checkable">在含有中文时转换数字为中文</span>
+          </label>
           <div align="left">其他功能&选项: </div>
           <input type="text" placeholder="下载文件名(默认yukuuri.wav)" id="filename">
           <div class="flex two">

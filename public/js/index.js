@@ -1,6 +1,7 @@
 var text = document.getElementById( "text" )
 var play = document.getElementById( "play" )
 var voice = document.getElementById( "voice" )
+var number = document.getElementById( "convert-number" )
 var zh = /[\u4e00-\u9fa5]/
 yukuuri.api = "/:aqtk/yukumo.mp3"
 var cache = {}
@@ -14,7 +15,7 @@ play.onclick = async function() {
     }
     if( !cache[text.value + voice.value] ) {
         var msg = Qmsg.loading( "正在获取音频，请不要多次点击")
-        var audio = await yukuuri.playAudio(zh.test(text.value) ? (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, "") : text.value, YukumoVoices[voice.value])
+        var audio = await yukuuri.playAudio(zh.test(text.value) ? (await zh2jp( text.value, number.checked )).replace(/(?<=\S) (?=\S)/g, "") : text.value, YukumoVoices[voice.value])
         cache[ text.value + voice.value ] = audio
         msg.close()
     } else {
@@ -28,7 +29,7 @@ var download = document.getElementById( "download" )
 download.onclick = async () => {
     var txt = ""
     if( zh.test( text.value ) ) {
-        txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, "")
+        txt = (await zh2jp( text.value, number.checked )).replace(/(?<=\S) (?=\S)/g, "")
     } else txt = text.value
     Qmsg.info( "下载会在(约)一分钟内弹出，请稍等" )
     yukuuri.downloadAudio( txt, "yukuuri.mp3", YukumoVoices[voice.value])
@@ -42,7 +43,7 @@ link.onclick = async () => {
     }
     var txt = ""
     if( zh.test( text.value ) ) {
-        txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, "")
+        txt = (await zh2jp( text.value, number.checked )).replace(/(?<=\S) (?=\S)/g, "")
     } else txt = text.value
     result.textContent = YukumoVoice.getUrl( txt, YukumoVoices[voice.value] )
 }
@@ -55,7 +56,7 @@ html.onclick = async () => {
     }
     var txt = ""
     if( zh.test( text.value ) ) {
-        txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, "")
+        txt = (await zh2jp( text.value, number.checked )).replace(/(?<=\S) (?=\S)/g, "")
     } else txt = text.value
     result.textContent = "<audio autoplay src=\"" + YukumoVoice.getUrl( txt, YukumoVoices[voice.value] ) + "\">\n  您的浏览器不支持audio\n</audio>"
 }
@@ -69,7 +70,7 @@ base64.onclick = async () => {
     }
     var txt = ""
     if( zh.test( text.value ) ) {
-        txt = (await zh2jp( text.value )).replace(/(?<=\S) (?=\S)/g, "")
+        txt = (await zh2jp( text.value, number.checked )).replace(/(?<=\S) (?=\S)/g, "")
     } else txt = text.value
     yukuuri.fetchAudio( txt, YukumoVoices[voice.value] )
         .then( file => {
