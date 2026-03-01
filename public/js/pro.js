@@ -10,12 +10,14 @@ var convert = document.getElementById("convert")
 var filename = document.getElementById("filename")
 var convertZh = document.getElementById("convert-zh")
 var save = document.getElementById("savetext")
-var number = document.getElementById( "convert-number" )
-var counter = document.getElementById( "count" )
+var number = document.getElementById("convert-number")
+var counter = document.getElementById("count")
+var translator = document.getElementById("translator")
 
 var cache = {text: void 0}
 var ctx = new AudioContext()
 var zh = /[\u4e00-\u9fa5]/
+var translate = LibreTranslator.setup("ja")
 yukuuri.api = "/:aqtk/yukumo.mp3"
 try {
     input.value = localStorage.getItem("input_text")
@@ -82,6 +84,10 @@ function createVoice() {
     return voc
 }
 
+function getInput() {
+    return output.value || input.value
+}
+
 input.oninput = function() {
     counter.textContent = input.value.length
 }
@@ -111,7 +117,7 @@ playBtn.onclick = async function() {
         var msg = Qmsg.loading("正在获取ING")
         var voc = createVoice()
         await aquestalk.playAudio(
-            zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value,
+            zh.test(getInput()) ? await zh2jp(getInput(), number.checked) : getInput(),
             voc)
         msg.close()
     } catch(e) {
@@ -124,7 +130,7 @@ download.onclick = async function() {
     try {
         var voc = createVoice()
         await aquestalk.downloadAudio(
-            zh.test(input.value) ? await zh2jp(input.value, number.checked) : input.value,
+            zh.test(getInput()) ? await zh2jp(getInput(), number.checked) : getInput(),
         filename.value || "yukumo.wav", voc)
     } catch(e) {
         Qmsg.error(e.toString())
@@ -133,9 +139,17 @@ download.onclick = async function() {
 }
 
 save.onclick = function() {
-    localStorage.setItem("input_text", input.value)
+    localStorage.setItem("input_text", getInput())
     localStorage.setItem("output_text", output.value)
     Qmsg.success("保存成功")
+}
+
+translator.onclick = async function() {
+    try {
+  output.value = await translate.translate(getInput())
+} catch( err ){
+  alert( err )
+}
 }
 
 Qmsg.success("页面加载完成")

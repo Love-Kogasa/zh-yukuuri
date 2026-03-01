@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <script src="yukumo/core.js"></script>
     <script src="yukumo/browser.js"></script>
+    <script src="js/translator.js"></script>
     <script src="https://fastly.jsdelivr.net/npm/qmsg@1.4.0/dist/index.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/creeperyang/pinyin/docs/browser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pinyin-to-kana@1.0.0/pinyinToKana.js"></script>
@@ -50,6 +51,7 @@
         <div class="menu">
           <a href="/" class="button">主页</a>
           <a class="pseudo button">本页</a>
+          <a class="button" href="https://offline.yukuuri.moe.page/">Offline 本地生成</a>
           <a class="button" href="https://github.com/Love-Kogasa/zh-yukuuri">Github (本项目)</a>
           <a class="button" href="https://www.yukumo.net/#/">Yukumo！</a>
           <a class="button" href="https://www.a-quest.com/">AquestTalk</a>
@@ -131,6 +133,7 @@
             <div><button class="tooltip-top full" data-tooltip="只将中文转换为同音日语，不经过AquesTalk2Koe" id="convert-zh">转换(中文-日语)</button></div>
             <div><button class="full tooltip-left" data-tooltip="保存当前文本框内容以便下次使用" id="savetext">保存</button></div>
           </div>
+          <!--<button class="full" id="translator">翻译(翻译到日语)</button>-->
           <div align="left"><a href="https://www.yukumo.net/static/siyo_onseikigou.pdf">你可以使用一些字符标记来控制输出的发音，点我(未汉化)</a></div>
           <div align="left">
             这是一份汉化后的辅助符号表
