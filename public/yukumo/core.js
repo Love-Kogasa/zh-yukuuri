@@ -2,7 +2,7 @@
 
 class YukumoVoice {
     aqtk = "aqtk10"
-    constructor( typ = "f1e", spd = 100, vol = 100, pit = 100, acc = 100, lmd = 100, fsc = 100 ) {
+    constructor( typ = "f1", spd = 100, vol = 100, pit = 100, acc = 100, lmd = 100, fsc = 100 ) {
         this.type = typ
         this.speed = spd
         this.volume = vol
@@ -18,13 +18,14 @@ class YukumoVoice {
   
     // 使用这种方法只是为了更清楚
     // 我看着也舒服一些(
-    static f1 = new YukumoVoice("f1e", 100, 100, 100, 100, 100, 100)
-    static f2 = new YukumoVoice("f2e", 100, 100,  77, 150, 100, 100)
-    static f3 = new YukumoVoice("f1e", 80, 100, 100, 100,  61, 148)
-    static m1 = new YukumoVoice("m1e", 100, 100, 30, 100, 100, 100)
-    static m2 = new YukumoVoice("m1e", 105, 100, 45, 130, 120, 100)
-    static r1 = new YukumoVoice("m1e", 100, 100,  30,  20, 190, 100)
-    static r2 = new YukumoVoice("f2e",  70, 100,  50,  50,  50, 180)
+    // ! Removed E (f1e -> f1)
+    static f1 = new YukumoVoice("f1", 100, 100, 100, 100, 100, 100)
+    static f2 = new YukumoVoice("f2", 100, 100,  77, 150, 100, 100)
+    static f3 = new YukumoVoice("f3", 80, 100, 100, 100,  61, 148)
+    static m1 = new YukumoVoice("m1", 100, 100, 30, 100, 100, 100)
+    static m2 = new YukumoVoice("m1", 105, 100, 45, 130, 120, 100)
+    static r1 = new YukumoVoice("m1", 100, 100,  30,  20, 190, 100)
+    static r2 = new YukumoVoice("r2",  70, 100,  50,  50,  50, 180)
   
     static getUrl( string, voice = YukumoVoice.f1, api = "https://www.yukumo.net/api/v2/:aqtk/koe.mp3" ) {
         return api.replace( ":aqtk", voice.aqtk ) + voice.format( string )

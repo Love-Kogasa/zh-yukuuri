@@ -3,10 +3,12 @@ var play = document.getElementById( "play" )
 var voice = document.getElementById( "voice" )
 var number = document.getElementById( "convert-number" )
 var zh = /[\u4e00-\u9fa5]/
-yukuuri.api = "/:aqtk/yukumo.mp3"
+yukuuri.api = yukuuri.api || "/:aqtk/yukumo.mp3"
+// yukuuri.api = "/official-demo/:aqtk/koe.wav"
 var cache = {}
 Qmsg.success( "页面加载完毕" )
-Qmsg.info( "如果浏览器不播放音频请尝试更换浏览器" )
+Qmsg.info( "若长时间无法获取音频，请使用本地生成" )
+Qmsg.info( "本地生成在菜单里有" )
 
 play.onclick = async function() {
     if( !text.value ) {

@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/pinyin-to-kana@1.0.0/pinyinToKana.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/number-to-chinese-words@1.0.20/number-to-chinese-words.min.js"></script>
     <script src="js/zh2jp.js"></script>
+    <script src="js/sw-install.js"></script>
     <script src="config.js"></script>
     <style>
       @media all and (orientation: landscape) {
@@ -103,7 +104,8 @@
             </header>
             <section class="content">
               除了播放和下载音频外，您还可以选择生成html代码插入到您的页面等！<br>
-              尽管提供API URL来获取音频，我和你建议您下载音频文件到本地或使用Base64编码
+              尽管提供API URL来获取音频，我和你建议您下载音频文件到本地或使用Base64编码<br>
+              <i>如果您设置了来源为official-demo则后三者均不可用！</i>
               <hr>
               点击想要的操作即可<br>
               <button id="download">▼ Download & 下载</button><br>

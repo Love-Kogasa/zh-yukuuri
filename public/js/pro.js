@@ -18,7 +18,8 @@ var cache = {text: void 0}
 var ctx = new AudioContext()
 var zh = /[\u4e00-\u9fa5]/
 var translate = LibreTranslator.setup("ja")
-yukuuri.api = "/:aqtk/yukumo.mp3"
+console.log(yukuuri.api)
+yukuuri.api = yukuuri.api || "/:aqtk/yukumo.mp3"
 try {
     input.value = localStorage.getItem("input_text")
     output.value = localStorage.getItem("output_text")
@@ -28,41 +29,12 @@ try {
     throw e
 }
 
-// 弃用
-function readFile(file) {
-    return new Promise(res => {
-        var reader = new FileReader()
-        reader.onload = () => res(reader.result)
-        reader.readAsArrayBuffer(file)
-    })
-}
-
 async function koe(kanji) {
     return await (
         await fetch(
             "koe.txt?boyomi=true&kanji=" + encodeURIComponent(kanji)
         )
     ).text()
-}
-
-// 弃用
-async function say(text, voice = YukumoVoice.f1) {
-    if(cache.url === voice.format(text)) {
-        return cache.audio
-    } else {
-        var source = await readFile( await aquestalk.fetchAudio(text, voice) )
-        cache.audio = ctx.decodeAudioData(source)
-        cache.url = voice.format(text)
-        return cache.audio
-    }
-}
-
-// 弃用
-function play(buffer) {
-    var source = ctx.createBufferSource()
-    source.buffer = buffer
-    source.connect(ctx.destination)
-    return source.start()
 }
 
 function intchecker(int) {
@@ -142,14 +114,6 @@ save.onclick = function() {
     localStorage.setItem("input_text", getInput())
     localStorage.setItem("output_text", output.value)
     Qmsg.success("保存成功")
-}
-
-translator.onclick = async function() {
-    try {
-  output.value = await translate.translate(getInput())
-} catch( err ){
-  alert( err )
-}
 }
 
 Qmsg.success("页面加载完成")

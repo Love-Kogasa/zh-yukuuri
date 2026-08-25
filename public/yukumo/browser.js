@@ -1,14 +1,15 @@
-var aquestalk
-var yukuuri = aquestalk = {
-    api: "https://www.yukumo.net/api/v2/:aqtk/koe.mp3",
+var aquestalk, yukkuri
+var yukuuri = yukkuri = aquestalk = {
+    // api: "https://www.yukumo.net/api/v2/:aqtk/koe.mp3",
     createAudio( string, voice ) {
         var audio = new Audio()
         audio.src = YukumoVoice.getUrl( string, voice, this.api )
+        console.log(audio.src)
         return audio
     },
-    downloadAudio( string, filename = "download.mp3", voice ) {
+    async downloadAudio( string, filename = "download.mp3", voice ) {
         var a = document.createElement( "a" )
-        a.href = YukumoVoice.getUrl( string, voice, this.api )
+        a.href = URL.createObjectURL(await (await fetch(YukumoVoice.getUrl( string, voice, this.api ))).blob())
         a.download = filename
         a.click()
         return a
